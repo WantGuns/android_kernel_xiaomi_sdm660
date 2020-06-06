@@ -119,3 +119,7 @@ android/configs/android-*.cfg
 
 # Clang's compilation database file
 /compile_commands.json
+
+# Chute: the "out" directory producing flashable kernel zips
+/chute
+/out
