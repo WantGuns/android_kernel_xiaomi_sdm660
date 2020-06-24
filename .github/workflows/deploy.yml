@@ -15,6 +15,10 @@ jobs:
     - name: compile
       run:  source .github/build.sh
 
+    - name: Get current time
+      id: time
+      run: echo "::set-output name=timestamp::$(TZ='Asia/Kolkata' date +'%m-%d_%H%M')"
+
     - name: create release
       id: create_release
       uses: actions/create-release@v1
@@ -31,6 +35,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_name: SharKernel lavender
-        asset_path: chute/AnyKernel/sharkbait*.zip
+        asset_name: SharKernel-lavender_${{ steps.time.outputs.timestamp }}.zip
+        asset_path: chute/AnyKernel/sharkbait_lavender.zip
         asset_content_type: application/zip
