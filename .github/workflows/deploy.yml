@@ -11,8 +11,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: compile
-      run:  source $(pwd)/.github/build.sh
+      run:  source .github/build.sh
     - name: deploy  
       uses: actions/upload-artifact@v2
       with:
-       path: ".github/chute/AnyKernel/sharkbait*.zip"
+       path: "chute/AnyKernel/sharkbait*.zip"
