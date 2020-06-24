@@ -9,7 +9,6 @@
 #
 # Normal rules
 #
-.*
 *.o
 *.o.*
 *.a
@@ -123,3 +122,4 @@ android/configs/android-*.cfg
 # Chute: the "out" directory producing flashable kernel zips
 /chute
 /out
+.github/chute

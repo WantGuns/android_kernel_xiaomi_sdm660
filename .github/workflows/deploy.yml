@@ -1,0 +1,18 @@
+on: 
+  push:
+    tags:
+      - 'v*.*'
+
+name: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+    - uses: actions/checkout@v2
+    - name: compile
+      run:  source $(pwd)/.github/build.sh
+    - name: deploy  
+      uses: actions/upload-artifact@v2
+      with:
+       path: ".github/chute/AnyKernel/sharkbait*.zip"

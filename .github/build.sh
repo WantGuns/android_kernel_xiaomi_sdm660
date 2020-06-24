@@ -20,8 +20,8 @@ export ARCH=arm64
 export KBUILD_BUILD_HOST=SharkBait
 export KBUILD_BUILD_USER="wantguns"
 popd
+#now inside the kernel root
 
-#now back inside the kernel root
 
 # Compile plox
 function compile() {
@@ -35,9 +35,9 @@ function compile() {
 }
 # Zipping
 function zipping() {
-    pushd chute/AnyKernel || exit 1
+    pushd .github/chute/AnyKernel || exit 1
     zip -r9 sharkbait-lavender-${TANGGAL}.zip *
-    popd
+    popd ..
 }
 
 compile
