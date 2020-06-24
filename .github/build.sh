@@ -37,7 +37,7 @@ function compile() {
 function zipping() {
     pushd chute/AnyKernel || exit 1
     zip -r9 sharkbait-lavender-${TANGGAL}.zip *
-    popd ..
+    popd
 }
 
 compile
