@@ -16,7 +16,6 @@ ANYKERNELDIR=$(pwd)/AnyKernel/
 GCC="$(pwd)/aarch64-linux-android-"
 IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 
-export CONFIG_PATH=$PWD/arch/arm64/configs/lavender-perf_defconfig
 PATH="${PWD}/clang/bin:$PATH"
 export ARCH=arm64
 export KBUILD_BUILD_HOST=SharkBait
