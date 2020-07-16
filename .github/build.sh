@@ -7,16 +7,16 @@ echo "Cloning dependencies"
 mkdir chute
 pushd chute
 
-git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
+#git clone --depth=1 https://github.com/kdrag0n/proton-clang clang
 git clone --depth=1 https://github.com/wantguns/AnyKernel3 AnyKernel
 
 echo "Done"
 
 ANYKERNELDIR=$(pwd)/AnyKernel/
-GCC="$(pwd)/aarch64-linux-android-"
-IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
+#GCC="$(pwd)/aarch64-linux-android-"
+#IMAGE=$(pwd)/out/arch/arm64/boot/Image.gz-dtb
 
-PATH="${PWD}/clang/bin:$PATH"
+#PATH="${PWD}/clang/bin:$PATH"
 export ARCH=arm64
 export KBUILD_BUILD_HOST=SharkBait
 export KBUILD_BUILD_USER="wantguns"
@@ -26,11 +26,12 @@ popd #now inside the kernel root
 # Compile plox
 function compile() {
    make O=out ARCH=arm64 sharkbait-lavender_defconfig
-       make -j$(nproc --all) O=out \
+       make -j6 O=out \
                              ARCH=arm64 \
-			     CC=clang -w \
-			     CROSS_COMPILE=aarch64-linux-gnu- \
 			     CROSS_COMPILE_ARM32=arm-linux-gnueabi-
+			     CC=gcc \
+			     CROSS_COMPILE=aarch64-linux-gnu- \
+			     KBUILD_CFLAGS+=-Wno-error
    cp out/arch/arm64/boot/Image.gz-dtb $ANYKERNELDIR
 }
 # Zipping
