@@ -123,3 +123,8 @@ android/configs/android-*.cfg
 /chute
 /out
 .github/chute
+
+#
+#Ignoring Android.bp link file
+#
+Android.bp
