@@ -8,8 +8,7 @@ mkdir chute
 pushd chute
 
 git clone --depth=1 https://github.com/wantguns/AnyKernel3 AnyKernel
-sudo apt update && sudo apt upgrade -y
-sudo apt install -y build-essential
+sudo apt-get install build-essential
 
 echo "Done"
 
@@ -24,7 +23,8 @@ popd #now inside the kernel root
 # Compile plox
 function compile() {
    make O=out ARCH=arm64 sharkbait-lavender_defconfig
-   make -j$(nproc --all) O=out ARCH=arm64
+   make -j$(nproc --all) O=out \
+                 ARCH=arm64 \
    cp out/arch/arm64/boot/Image.gz-dtb $ANYKERNELDIR
 }
 # Zipping
