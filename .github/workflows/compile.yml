@@ -2,6 +2,7 @@ on:
   push:
     branches:
       - sharkbait
+      - native
     tags-ignore:
       - 'v*.*'
 
